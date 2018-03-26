@@ -103,7 +103,18 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: [
+      '.web.js', 
+      '.mjs', 
+      '.js', 
+      '.json', 
+      '.web.jsx', 
+      '.jsx', 
+      '.web.ts',
+      '.ts',
+      '.web.tsx',
+      '.tsx'
+    ],
     alias: {
       // Resolve Babel runtime relative to react-scripts.
       // It usually still works on npm 3 without this but it would be
@@ -152,6 +163,16 @@ module.exports = {
         ],
         include: paths.srcPaths,
         exclude: [/[/\\\\]node_modules[/\\\\]/],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        include: paths.srcPaths,
+        exclude: [/[/\\\\]node_modules[/\\\\]/],
+        enforce: 'pre',
+        loader: require.resolve('tslint-loader'),
+        options: {
+          configFile: require.resolve('tslint-react/tslint-react.json'),
+        },
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -224,6 +245,17 @@ module.exports = {
                   cacheDirectory: true,
                   highlightCode: true,
                 },
+              },
+            ],
+          },
+          // Compile .ts?
+          {
+            test: /\.(ts|tsx)$/,
+            include: paths.srcPaths,
+            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            use: [
+              {
+                loader: require.resolve('ts-loader'),
               },
             ],
           },

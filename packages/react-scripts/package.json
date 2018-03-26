@@ -1,5 +1,5 @@
 {
-  "name": "react-scripts",
+  "name": "axilis-react-scripts",
   "version": "1.1.0",
   "description": "Configuration and scripts for Create React App.",
   "repository": "facebook/create-react-app",
@@ -60,6 +60,10 @@
     "svgr": "1.8.1",
     "sw-precache-webpack-plugin": "0.11.4",
     "thread-loader": "1.1.2",
+    "ts-loader": "^4.1.0",
+    "tslint": "^5.9.1",
+    "tslint-loader": "^3.6.0",
+    "typescript": "^2.7.2",
     "uglifyjs-webpack-plugin": "1.1.6",
     "url-loader": "0.6.2",
     "webpack": "3.10.0",
