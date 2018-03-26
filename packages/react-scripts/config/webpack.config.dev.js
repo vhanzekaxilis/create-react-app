@@ -113,7 +113,8 @@ module.exports = {
       '.web.ts',
       '.ts',
       '.web.tsx',
-      '.tsx'
+      '.tsx',
+      '.vue'
     ],
     alias: {
       // Resolve Babel runtime relative to react-scripts.
@@ -256,6 +257,17 @@ module.exports = {
             use: [
               {
                 loader: require.resolve('ts-loader'),
+              },
+            ],
+          },
+          // Compile .vue
+          {
+            test: /\.vue$/,
+            include: paths.srcPaths,
+            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            use: [
+              {
+                loader: require.resolve('vue-loader'),
               },
             ],
           },
