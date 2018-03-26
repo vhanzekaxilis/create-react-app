@@ -282,6 +282,26 @@ module.exports = {
               },
             ],
           },
+          // Adds support for Sass
+          {
+            test: /\.scss$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: postCSSLoaderOptions,
+              },
+              {
+                loader: require.resolve('sass-loader')
+              }
+            ],
+          },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
