@@ -1,11 +1,9 @@
-// @remove-on-eject-begin
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-// @remove-on-eject-end
 'use strict';
 
 const path = require('path');
@@ -47,28 +45,8 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
-// config after eject: we're in ./config/
-module.exports = {
-  dotenv: resolveApp('.env'),
-  appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  testsSetup: resolveApp('src/setupTests.js'),
-  appNodeModules: resolveApp('node_modules'),
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
-};
-
-let checkForMonorepo = true;
-
-// @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
-// config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
@@ -82,7 +60,6 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
-  // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
   ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
 };
@@ -91,7 +68,7 @@ module.exports = {
 const useTemplate =
   appDirectory === fs.realpathSync(path.join(__dirname, '..'));
 
-checkForMonorepo = !useTemplate;
+let checkForMonorepo = !useTemplate;
 
 if (useTemplate) {
   module.exports = {
@@ -107,12 +84,10 @@ if (useTemplate) {
     appNodeModules: resolveOwn('node_modules'),
     publicUrl: getPublicUrl(resolveOwn('package.json')),
     servedPath: getServedPath(resolveOwn('package.json')),
-    // These properties only exist before ejecting:
     ownPath: resolveOwn('.'),
     ownNodeModules: resolveOwn('node_modules'),
   };
 }
-// @remove-on-eject-end
 
 module.exports.srcPaths = [module.exports.appSrc];
 

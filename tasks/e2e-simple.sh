@@ -257,39 +257,3 @@ verify_env_url
 
 # Test reliance on webpack internals
 verify_module_scope
-
-# ******************************************************************************
-# Finally, let's check that everything still works after ejecting.
-# ******************************************************************************
-
-# Eject...
-echo yes | npm run eject
-
-# Test the build
-yarn build
-# Check for expected output
-exists build/*.html
-exists build/static/js/*.js
-exists build/static/css/*.css
-exists build/static/media/*.svg
-exists build/favicon.ico
-
-# Run tests, overring the watch option to disable it.
-# `CI=true yarn test` won't work here because `yarn test` becomes just `jest`.
-# We should either teach Jest to respect CI env variable, or make
-# `scripts/test.js` survive ejection (right now it doesn't).
-yarn test --watch=no
-# Uncomment when snapshot testing is enabled by default:
-# exists src/__snapshots__/App.test.js.snap
-
-# Test the server
-yarn start --smoke-test
-
-# Test environment handling
-verify_env_url
-
-# Test reliance on webpack internals
-verify_module_scope
-
-# Cleanup
-cleanup

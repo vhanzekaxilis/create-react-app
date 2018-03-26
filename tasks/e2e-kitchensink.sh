@@ -165,9 +165,6 @@ E2E_FILE=./build/index.html \
 # Finally, let's check that everything still works after ejecting.
 # ******************************************************************************
 
-# Eject...
-echo yes | npm run eject
-
 # Link to test module
 npm link "$temp_module_path/node_modules/test-integrity"
 

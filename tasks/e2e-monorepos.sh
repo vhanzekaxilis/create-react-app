@@ -117,12 +117,6 @@ verifyBuild
 yarn start --smoke-test
 verifyTest
 
-# Test eject
-echo yes | npm run eject
-verifyBuild
-yarn start --smoke-test
-verifyTest
-
 # ******************************************************************************
 # Test create-react-app inside workspace
 # ******************************************************************************
