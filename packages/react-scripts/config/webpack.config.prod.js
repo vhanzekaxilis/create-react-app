@@ -78,7 +78,7 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: [require.resolve('./polyfills'), paths.appIndex],
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -111,17 +111,17 @@ module.exports = {
     // `web` extension prefixes have been added for better support
     // for React Native Web.
     extensions: [
-      '.web.js', 
-      '.mjs', 
-      '.js', 
-      '.json', 
-      '.web.jsx', 
-      '.jsx', 
+      '.web.js',
+      '.mjs',
+      '.js',
+      '.json',
+      '.web.jsx',
+      '.jsx',
       '.web.ts',
       '.ts',
       '.web.tsx',
       '.tsx',
-      '.vue'
+      '.vue',
     ],
     alias: {
       // Resolve Babel runtime relative to react-scripts.
@@ -347,8 +347,8 @@ module.exports = {
                       options: postCSSLoaderOptions,
                     },
                     {
-                      loader: require.resolve('sass-loader')
-                    }
+                      loader: require.resolve('sass-loader'),
+                    },
                   ],
                 },
                 extractTextPluginOptions
@@ -382,8 +382,8 @@ module.exports = {
                       options: postCSSLoaderOptions,
                     },
                     {
-                      loader: require.resolve('less-loader')
-                    }
+                      loader: require.resolve('less-loader'),
+                    },
                   ],
                 },
                 extractTextPluginOptions
@@ -519,7 +519,7 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: publicPath
+      publicPath: publicPath,
     }),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.

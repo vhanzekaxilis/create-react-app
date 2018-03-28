@@ -64,7 +64,7 @@
     "svgr": "1.8.1",
     "sw-precache-webpack-plugin": "0.11.4",
     "thread-loader": "1.1.2",
-    "ts-loader": "^4.1.0",
+    "ts-loader": "^3.5.0",
     "tslint": "^5.9.1",
     "tslint-loader": "^3.6.0",
     "tslint-react": "^3.5.1",

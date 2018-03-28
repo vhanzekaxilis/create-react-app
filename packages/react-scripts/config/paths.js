@@ -14,7 +14,10 @@ const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const resolveApp = relativePath => {
+  const p = path.resolve(appDirectory, relativePath);
+  return fs.existsSync(p) && p;
+};
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -45,7 +48,10 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
-const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
+const resolveOwn = relativePath => {
+  const p = path.resolve(__dirname, '..', relativePath);
+  return fs.existsSync(p) && p;
+};
 
 module.exports = {
   dotenv: resolveApp('.env'),
@@ -53,7 +59,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndex: resolveApp('src/index.js') || resolveApp('src/index.ts'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   testsSetup: resolveApp('src/setupTests.js'),
@@ -77,7 +83,9 @@ if (useTemplate) {
     appBuild: resolveOwn('../../build'),
     appPublic: resolveOwn('template/public'),
     appHtml: resolveOwn('template/public/index.html'),
-    appIndexJs: resolveOwn('template/src/index.js'),
+    appIndex:
+      resolveOwn('template/src/index.js') ||
+      resolveOwn('template/src/index.ts'),
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn('template/src'),
     testsSetup: resolveOwn('template/src/setupTests.js'),
