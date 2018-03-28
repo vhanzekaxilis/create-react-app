@@ -207,6 +207,7 @@ module.exports = {
                   babelrc: false,
                   presets: [require.resolve('babel-preset-react-app')],
                   plugins: [
+                    require.resolve('react-hot-loader/babel'),
                     [
                       require.resolve('babel-plugin-named-asset-import'),
                       {
@@ -255,6 +256,18 @@ module.exports = {
             include: paths.srcPaths,
             exclude: [/[/\\\\]node_modules[/\\\\]/],
             use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  babelrc: false,
+                  plugins: [require.resolve('react-hot-loader/babel')],
+                  // This is a feature of `babel-loader` for webpack (not Babel itself).
+                  // It enables caching results in ./node_modules/.cache/babel-loader/
+                  // directory for faster rebuilds.
+                  cacheDirectory: true,
+                  highlightCode: true,
+                },
+              },
               {
                 loader: require.resolve('ts-loader'),
               },
