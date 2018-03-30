@@ -17,7 +17,6 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const appPackage = require(paths.appPackageJson);
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -43,6 +42,9 @@ const postCSSLoaderOptions = {
     }),
   ],
 };
+
+// package.json
+const appPackage = require(paths.appPackageJson);
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
