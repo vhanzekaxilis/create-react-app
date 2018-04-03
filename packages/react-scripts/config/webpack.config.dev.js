@@ -117,7 +117,6 @@ module.exports = {
       '.ts',
       '.web.tsx',
       '.tsx',
-      '.vue',
     ],
     alias: Object.assign(
       {
@@ -276,17 +275,6 @@ module.exports = {
               },
               {
                 loader: require.resolve('ts-loader'),
-              },
-            ],
-          },
-          // Compile .vue
-          {
-            test: /\.vue$/,
-            include: paths.srcPaths,
-            exclude: [/[/\\\\]node_modules[/\\\\]/],
-            use: [
-              {
-                loader: require.resolve('vue-loader'),
               },
             ],
           },
